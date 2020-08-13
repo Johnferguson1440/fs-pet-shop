@@ -4,7 +4,7 @@ var express = require('express');
 var app = express();
 //require fs
 var fs = require('fs');
-   
+//call back function
 
  //handle request with routes
  //add all routes indiv then refactor after.
@@ -15,8 +15,7 @@ app.get('/pets', function(req, res){
         //var parsedData = JSON.parse(data);        
         if(error){
             console.log(error);    
-        }else{  
-                     
+        }else{                       
             res.statusCode = 200;            
             res.setHeader("Content-Type", 'application/json');
             res.send(data);
@@ -27,8 +26,7 @@ app.get('/pets/0', function(req, res){
         var parsedData = JSON.parse(data);        
         if(error){
             console.log(error);    
-        }else{  
-                     
+        }else{                       
             res.statusCode = 200;            
             res.setHeader("Content-Type", 'application/json');
             res.send(parsedData[0]);
@@ -40,30 +38,28 @@ app.get('/pets/1', function(req, res){
         var parsedData = JSON.parse(data);        
         if(error){
             console.log(error);    
-        }else{  
-                     
+        }else{                       
             res.statusCode = 200;            
             res.setHeader("Content-Type", 'application/json');
             res.send(parsedData[1]);
     }
 })})
-
 app.get('/pets/2', function(req, res){
     res.statusCode = 404;
     res.setHeader("Content-Type", "text/plain");
-    res.send("Not Found!");
+    res.send("Not Found");
 })
 app.get('/pets/-1', function(req, res){
     res.statusCode = 404;
     res.setHeader("Content-Type", "text/plain");
-    res.send("Not Found!");
+    res.send("Not Found");
 })
 
  //listen on a port
 app.listen(3000, function(){
     console.log('server is running');
 })
-
+module.exports= app;
 
 
 
